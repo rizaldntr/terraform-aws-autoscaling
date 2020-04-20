@@ -111,20 +111,20 @@ resource "aws_autoscaling_group" "main" {
   load_balancers            = ["${var.asg_clb_names}"]
   termination_policies      = ["${var.asg_termination_policies}"]
 
-  mixed_instances_policy {
-    launch_template {
-      launch_template_specification {
-        launch_template_id = "${aws_launch_template.main.id}"
-        version            = "$Latest"
-      }
+  # mixed_instances_policy {
+  #   launch_template {
+  #     launch_template_specification {
+  #       launch_template_id = "${aws_launch_template.main.id}"
+  #       version            = "$Latest"
+  #     }
 
-      override = [
-        "${var.launch_template_overrides}",
-      ]
-    }
+  #     override = [
+  #       "${var.launch_template_overrides}",
+  #     ]
+  #   }
 
-    instances_distribution = ["${var.mixed_instances_distribution}"]
-  }
+  #   instances_distribution = ["${var.mixed_instances_distribution}"]
+  # }
 
   tags = [
     {
