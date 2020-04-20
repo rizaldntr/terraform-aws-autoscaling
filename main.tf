@@ -126,6 +126,11 @@ resource "aws_autoscaling_group" "main" {
   #   instances_distribution = ["${var.mixed_instances_distribution}"]
   # }
 
+  launch_template {
+    id      = "${aws_launch_template.main.id}"
+    version = "$Latest"
+  }
+
   tags = [
     {
       key                 = "Name"
